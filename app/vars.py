@@ -25,11 +25,6 @@ class var(object):
 
     ON_HEROKU = False
     ON_REPLIT = False
-    HEROKU_APP_NAME = ''
-    REPLIT_APP_NAME = ''
-    REPLIT_USERNAME = ''
-    FQDN = ''
-    URL = ''
 
     if 'HEROKU_APP_NAME' in environ:
         ON_HEROKU = True

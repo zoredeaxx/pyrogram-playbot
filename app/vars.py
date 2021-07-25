@@ -4,17 +4,25 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class var(object):
+    # ============== Mandatory Custom Variables ==============
+
     API_ID = int(getenv('API_ID'))
     API_HASH = str(getenv('API_HASH'))
     BOT_TOKEN = str(getenv('BOT_TOKEN'))
+    # OWNER_ID = int(getenv('OWNER_ID'))
+    # BIN_CHANNEL = int(getenv('BIN_CHANNEL'))
+
+    # ============== Optional Custom Variables ===============
+
     SLEEP_THRESHOLD = int(getenv('SLEEP_THRESHOLD', '60'))
     WORKERS = int(getenv('WORKERS', '4'))
     PORT = int(getenv('PORT', 8080))
     BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
     KEEP_ALIVE = getenv('KEEP_ALIVE', False)
-    # BIN_CHANNEL = int(getenv('BIN_CHANNEL'))
-    # OWNER_ID = int(getenv('OWNER_ID'))
     # NO_PORT = bool(getenv('NO_PORT', False))
+
+    # ============== Mandatory System Variables ==============
+
     ON_HEROKU = False
     ON_REPLIT = False
     APP_NAME = ''
@@ -39,6 +47,6 @@ class var(object):
         FQDN = getenv('FQDN', BIND_ADRESS)
     
     if ON_HEROKU or ON_REPLIT:
-        URL = "https://{}/".format(FQDN)
+        URL = 'https://{}/'.format(FQDN)
     else:
-        URL = "http://{}:{}/".format(FQDN, PORT)
+        URL = 'http://{}:{}/'.format(FQDN, PORT)

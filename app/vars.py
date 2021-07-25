@@ -25,24 +25,24 @@ class var(object):
 
     ON_HEROKU = False
     ON_REPLIT = False
-    APP_NAME = ''
-    REPL_SLUG = ''
-    REPL_OWNER = ''
+    HEROKU_APP_NAME = ''
+    REPLIT_APP_NAME = ''
+    REPLIT_USERNAME = ''
     FQDN = ''
     URL = ''
 
-    if 'APP_NAME' in environ:
+    if 'HEROKU_APP_NAME' in environ:
         ON_HEROKU = True
-        APP_NAME = str(getenv('APP_NAME'))
+        HEROKU_APP_NAME = str(getenv('APP_NAME'))
     elif 'REPL_SLUG' in environ:
         ON_REPLIT = True
-        REPL_SLUG = str(getenv('REPL_SLUG'))
-        REPL_OWNER = str(getenv('REPL_OWNER'))
+        REPLIT_APP_NAME = str(getenv('REPL_SLUG'))
+        REPLIT_USERNAME = str(getenv('REPL_OWNER'))
 
     if ON_HEROKU:
-        FQDN = APP_NAME+'.herokuapp.com'
+        FQDN = HEROKU_APP_NAME+'.herokuapp.com'
     elif ON_REPLIT:
-        FQDN = REPL_SLUG+'.'+REPL_OWNER+'.repl.co'
+        FQDN = REPLIT_APP_NAME+'.'+REPLIT_USERNAME+'.repl.co'
     else:
         FQDN = getenv('FQDN', BIND_ADRESS)
     

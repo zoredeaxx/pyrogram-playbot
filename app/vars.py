@@ -42,8 +42,8 @@ class var(object):
         FQDN = getenv('FQDN', BIND_ADRESS)
     
     if ON_HEROKU or ON_REPLIT or (PORT == 443):
-        URL = 'https://{}'.format(FQDN)
+        URL = 'https://{}/'.format(FQDN)
     elif not ON_HEROKU and not ON_REPLIT and PORT == 80:
-        URL = 'http://{}'.format(FQDN)
+        URL = 'http://{}/'.format(FQDN)
     else:
-        URL = 'http://{}:{}'.format(FQDN, PORT)
+        URL = 'http://{}:{}/'.format(FQDN, PORT)

@@ -1,5 +1,5 @@
 from pyrogram import Client
-from ..vars import var
+from app.vars import var
 
 BOT = Client(
     session_name= ':memory:',

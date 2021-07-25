@@ -5,11 +5,11 @@ import logging
 import importlib
 from pathlib import Path
 from pyrogram import idle
-from .bot import BOT
-from .vars import var
+from app.bot import BOT
+from app.vars import var
 from aiohttp import web
-from .server import web_server
-from .utils.keepalive import ping_server, request_server
+from app.server import web_server
+from app.utils.keepalive import ping_server, request_server
 from apscheduler.schedulers.background import BackgroundScheduler
 
 logging.basicConfig(

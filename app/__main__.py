@@ -55,19 +55,18 @@ async def start_services():
     print('-------------------- Initalizing Web Server --------------------')
     app = web.AppRunner(await web_server())
     await app.setup()
-    bind_address = "0.0.0.0" if var.ON_HEROKU or var.ON_REPLIT else var.FQDN
-    await web.TCPSite(app, bind_address, var.PORT).start()
+    try:
+        await web.TCPSite(app, var.BIND_ADRESS, var.PORT).start()
+    except:
+        sys.exit("Couldn\'t bind the app on specified host or port. Please check if the specified host is valid for your machine and make sure the port is empty.")
     print('----------------------------- DONE -----------------------------')
     print('\n')
     print('----------------------- Service Started -----------------------')
     print('Bot => {}'.format((await BOT.get_me()).first_name))
-    print('Server IP => {}:{}'.format(bind_address, var.PORT))
-    print('App Runnng On => {}'.format(var.FQDN))
+    print('Server IP => {}:{}'.format(var.BIND_ADRESS, var.PORT))
+    print('App Runnng On => {}'.format(var.URL))
     print('---------------------------------------------------------------')
     await idle()
 
 if __name__ == '__main__':
-    try:
-        loop.run_until_complete(start_services())
-    except KeyboardInterrupt:
-        logging.info('----------------------- Service Stopped -----------------------')
+    loop.run_until_complete(start_services())

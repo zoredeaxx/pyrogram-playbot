@@ -17,7 +17,7 @@ class var(object):
     SLEEP_THRESHOLD = int(getenv('SLEEP_THRESHOLD', '60'))
     WORKERS = int(getenv('WORKERS', '4'))
     PORT = int(getenv('PORT', 8080))
-    BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
+    BIND_ADRESS = str(getenv('BIND_ADDRESS', '0.0.0.0'))
     KEEP_ALIVE = getenv('KEEP_ALIVE', False)
     # NO_PORT = bool(getenv('NO_PORT', False))
 
@@ -41,7 +41,9 @@ class var(object):
     else:
         FQDN = getenv('FQDN', BIND_ADRESS)
     
-    if ON_HEROKU or ON_REPLIT:
-        URL = 'https://{}/'.format(FQDN)
+    if ON_HEROKU or ON_REPLIT or (PORT == 443):
+        URL = 'https://{}'.format(FQDN)
+    elif not ON_HEROKU and not ON_REPLIT and PORT == 80:
+        URL = 'http://{}'.format(FQDN)
     else:
-        URL = 'http://{}:{}/'.format(FQDN, PORT)
+        URL = 'http://{}:{}'.format(FQDN, PORT)

@@ -9,7 +9,7 @@ from app.bot import BOT
 from app.vars import var
 from aiohttp import web
 from app.server import web_server
-from app.utils.keepalive import ping_server, request_server
+from app.utils.keepalive import ping_server
 from apscheduler.schedulers.background import BackgroundScheduler
 
 logging.basicConfig(
@@ -24,14 +24,13 @@ files = glob.glob(ppath)
 
 loop = asyncio.get_event_loop()
 
-
 async def start_services():
     print('\n')
     print('------------------- Initalizing Telegram Bot -------------------')
     await BOT.start()
     print('----------------------------- DONE -----------------------------')
     print('\n')
-    print('--------------------------- Importing ---------------------------')
+    print('--------------------------- Importing All Plugins ---------------------------')
     for name in files:
         with open(name) as a:
             patt = Path(a.name)
@@ -43,18 +42,12 @@ async def start_services():
             spec.loader.exec_module(load)
             sys.modules["app.bot.plugins." + plugin_name] = load
             print("Imported => " + plugin_name)
+    print('----------------------------- DONE -----------------------------')
     if var.ON_HEROKU and var.KEEP_ALIVE:
-        print('------------------ Starting Keep Alive Service ------------------')
+        print('------------------ Starting Keep-Alive Service ------------------')
         print('Platform Detected => Heroku')
         scheduler = BackgroundScheduler()
         scheduler.add_job(ping_server, "interval", seconds=1200)
-        scheduler.start()
-        print('----------------------------- DONE -----------------------------')
-    if var.ON_REPLIT and var.KEEP_ALIVE:
-        print('------------------ Starting Keep Alive Service ------------------')
-        print('Platform Detected => Replit')
-        scheduler = BackgroundScheduler()
-        scheduler.add_job(request_server, "interval", seconds=300)
         scheduler.start()
         print('----------------------------- DONE -----------------------------')
     print('-------------------- Initalizing Web Server --------------------')
@@ -65,9 +58,9 @@ async def start_services():
     print('----------------------------- DONE -----------------------------')
     print('\n')
     print('----------------------- Service Started -----------------------')
-    print('                        bot =>> {}'.format((await BOT.get_me()).first_name))
-    print('                        server ip =>> {}:{}'.format(bind_address, var.PORT))
-    print('                        app runnng on =>> {}'.format(var.FQDN))
+    print('Bot => {}'.format((await BOT.get_me()).first_name))
+    print('Server IP => {}:{}'.format(bind_address, var.PORT))
+    print('App Runnng On => {}'.format(var.FQDN))
     print('---------------------------------------------------------------')
     await idle()
 

@@ -34,9 +34,9 @@ class var(object):
         REPLIT_APP_NAME = str(getenv('REPL_SLUG'))
         REPLIT_USERNAME = str(getenv('REPL_OWNER'))
 
-    if ON_HEROKU:
+    if ON_HEROKU and 'FQDN' not in environ:
         FQDN = HEROKU_APP_NAME+'.herokuapp.com'
-    elif ON_REPLIT:
+    elif ON_REPLIT and 'FQDN' not in environ:
         FQDN = REPLIT_APP_NAME+'.'+REPLIT_USERNAME+'.repl.co'
     else:
         FQDN = getenv('FQDN', BIND_ADRESS)

@@ -30,7 +30,7 @@ async def start_services():
     await BOT.start()
     print('----------------------------- DONE -----------------------------')
     print('\n')
-    print('--------------------------- Importing All Plugins ---------------------------')
+    print('-------------------- Importing All Plugins ---------------------')
     for name in files:
         with open(name) as a:
             patt = Path(a.name)

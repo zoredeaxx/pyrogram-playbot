@@ -43,6 +43,7 @@ async def start_services():
             sys.modules["app.bot.plugins." + plugin_name] = load
             print("Imported => " + plugin_name)
     print('----------------------------- DONE -----------------------------')
+    print('\n')
     if var.ON_HEROKU and var.KEEP_ALIVE:
         print('------------------ Starting Keep-Alive Service ------------------')
         print('Platform Detected => Heroku')
@@ -50,6 +51,7 @@ async def start_services():
         scheduler.add_job(ping_server, "interval", seconds=1200)
         scheduler.start()
         print('----------------------------- DONE -----------------------------')
+        print('\n')
     print('-------------------- Initalizing Web Server --------------------')
     app = web.AppRunner(await web_server())
     await app.setup()

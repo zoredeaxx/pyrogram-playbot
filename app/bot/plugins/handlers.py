@@ -3,5 +3,5 @@ from app.vars import var
 from pyrogram import filters
 
 @BOT.on_message(filters.command('start'))
-async def start(bot, message):
+async def start(_, message):
     await message.reply("Hello! You reached Pyrogram Playbot.")

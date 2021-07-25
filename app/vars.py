@@ -8,12 +8,12 @@ class var(object):
     API_HASH = str(getenv('API_HASH'))
     BOT_TOKEN = str(getenv('BOT_TOKEN'))
     SLEEP_THRESHOLD = int(getenv('SLEEP_THRESHOLD', '60'))
-    WORKERS = int(getenv('WORKERS', '3'))
-    BIN_CHANNEL = int(getenv('BIN_CHANNEL')) if 'BIN_CHANNEL' in environ else None
+    WORKERS = int(getenv('WORKERS', '4'))
     PORT = int(getenv('PORT', 8080))
     BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
     KEEP_ALIVE = getenv('KEEP_ALIVE', False)
-    # OWNER_ID = int(getenv('OWNER_ID')) #TODO
+    # BIN_CHANNEL = int(getenv('BIN_CHANNEL'))
+    # OWNER_ID = int(getenv('OWNER_ID'))
     # NO_PORT = bool(getenv('NO_PORT', False))
     ON_HEROKU = False
     ON_REPLIT = False
@@ -30,9 +30,6 @@ class var(object):
         ON_REPLIT = True
         REPL_SLUG = str(getenv('REPL_SLUG'))
         REPL_OWNER = str(getenv('REPL_OWNER'))
-    else:
-        ON_HEROKU = False
-        ON_REPLIT = False
 
     if ON_HEROKU:
         FQDN = APP_NAME+'.herokuapp.com'

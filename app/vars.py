@@ -28,7 +28,7 @@ class var(object):
 
     if 'HEROKU_APP_NAME' in environ:
         ON_HEROKU = True
-        HEROKU_APP_NAME = str(getenv('APP_NAME'))
+        HEROKU_APP_NAME = str(getenv('HEROKU_APP_NAME'))
     elif 'REPL_SLUG' in environ:
         ON_REPLIT = True
         REPLIT_APP_NAME = str(getenv('REPL_SLUG'))

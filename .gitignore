@@ -114,4 +114,4 @@ dmypy.json
 .pyre/
 
 # Custom
-.vascode/
+.vscode/

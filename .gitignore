@@ -114,5 +114,4 @@ dmypy.json
 .pyre/
 
 # Custom
-.vscode/
-*.session
+.vascode/

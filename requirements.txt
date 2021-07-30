@@ -1,6 +1,6 @@
-aiohttp
-apscheduler
-pyrogram
-python-dotenv
-requests
+https://github.com/pyrogram/pyrogram/archive/master.zip
 tgcrypto
+aiohttp
+cchardet
+aiodns
+python-dotenv

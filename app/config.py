@@ -9,6 +9,7 @@ class var(object):
     API_ID = int(getenv('API_ID'))
     API_HASH = str(getenv('API_HASH'))
     BOT_TOKEN = str(getenv('BOT_TOKEN'))
+    # SESSION_STRING = str(getenv('SESSION_STRING'))
     # OWNER_ID = int(getenv('OWNER_ID'))
     # BIN_CHANNEL = int(getenv('BIN_CHANNEL'))
 
@@ -18,7 +19,6 @@ class var(object):
     WORKERS = int(getenv('WORKERS', '4'))
     PORT = int(getenv('PORT', 8080))
     BIND_ADRESS = str(getenv('BIND_ADDRESS', '0.0.0.0'))
-    KEEP_ALIVE = getenv('KEEP_ALIVE', False)
     # NO_PORT = bool(getenv('NO_PORT', False))
 
     # ============== Mandatory System Variables ==============

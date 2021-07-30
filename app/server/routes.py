@@ -1,6 +1,6 @@
 import time
 from aiohttp import web
-from app.bot import BOT
+from app import bot
 from app import StartTime
 from app.utils.time_format import get_readable_time
 
@@ -10,4 +10,4 @@ routes = web.RouteTableDef()
 async def root_route_handler(request):
     return web.json_response({"status": "running",
                               "uptime": get_readable_time(time.time() - StartTime),
-                              "bot_username": '@'+(await BOT.get_me()).username})
+                              "bot_username": '@'+(await bot.get_me()).username})

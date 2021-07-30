@@ -1,1 +1,1 @@
-web: python -m app
+web: python3 -m app

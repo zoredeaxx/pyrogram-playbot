@@ -1,13 +1,10 @@
 import sys
-import logging
 from pyrogram import idle
 from asyncio import get_event_loop
 from aiohttp import web
 from app.server import web_server
 from app import bot
 from app.config import var
-
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 loop = get_event_loop()
 

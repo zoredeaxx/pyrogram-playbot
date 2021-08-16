@@ -16,7 +16,6 @@ class var(object):
     # ============== Optional Custom Variables ===============
 
     SLEEP_THRESHOLD = int(getenv('SLEEP_THRESHOLD', '60'))
-    WORKERS = int(getenv('WORKERS', '4'))
     PORT = int(getenv('PORT', 8080))
     BIND_ADRESS = str(getenv('BIND_ADDRESS', '0.0.0.0'))
     # NO_PORT = bool(getenv('NO_PORT', False))

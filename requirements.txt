@@ -3,4 +3,5 @@ tgcrypto
 aiohttp
 cchardet
 aiodns
+telegraph
 python-dotenv
